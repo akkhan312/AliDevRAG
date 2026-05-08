@@ -6,6 +6,12 @@ Built with **FastAPI** (backend) + **React + Vite** (frontend) + **Google Gemini
 
 ---
 
+## 🖼️ Preview
+
+![AliDevRAG App Screenshot](./assets/screenshot.png)
+
+---
+
 ## 🗂️ Project Structure
 
 ```
