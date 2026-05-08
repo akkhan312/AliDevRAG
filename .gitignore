@@ -1,0 +1,46 @@
+# ========================
+# Python / Backend
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Environment variables — NEVER commit your API keys!
+backend/.env
+.env
+
+# Uploaded documents (user data)
+backend/uploads/
+
+# Vector store (auto-regenerated)
+backend/simple_chroma_db.json
+backend/documents_metadata.json
+backend/chroma_db/
+
+# ========================
+# Node / Frontend
+# ========================
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# ========================
+# General
+# ========================
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+.idea/
+.vscode/
