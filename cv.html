@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Engr Ali Khan – MERN Stack Developer CV</title>
+<meta name="description" content="CV of Engr Ali Khan, MERN Stack Software Engineer at Itsolera Pvt Ltd with 4+ years experience."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0a0d14;
+    --card:#111520;
+    --border:#1e2535;
+    --accent:#6c63ff;
+    --accent2:#00d4aa;
+    --text:#e8eaf0;
+    --muted:#7a8399;
+    --white:#fff;
+  }
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    padding:40px 20px;
+  }
+  .page{max-width:860px;margin:0 auto;}
+
+  /* HEADER */
+  .header{
+    background:linear-gradient(135deg,#0f1221 0%,#1a1040 50%,#0f1221 100%);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:40px 44px;
+    display:flex;
+    gap:32px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    margin-bottom:24px;
+  }
+  .header::before{
+    content:'';
+    position:absolute;
+    top:-60px;right:-60px;
+    width:220px;height:220px;
+    background:radial-gradient(circle,rgba(108,99,255,.25),transparent 70%);
+    border-radius:50%;
+  }
+  .header::after{
+    content:'';
+    position:absolute;
+    bottom:-40px;left:30%;
+    width:160px;height:160px;
+    background:radial-gradient(circle,rgba(0,212,170,.15),transparent 70%);
+    border-radius:50%;
+  }
+  .avatar{
+    width:100px;height:100px;
+    border-radius:50%;
+    border:3px solid var(--accent);
+    object-fit:cover;
+    flex-shrink:0;
+    z-index:1;
+  }
+  .header-info{z-index:1;}
+  .header-info h1{
+    font-size:28px;font-weight:800;
+    background:linear-gradient(135deg,var(--white),var(--accent));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:4px;
+  }
+  .header-info .title{
+    font-size:14px;font-weight:500;
+    color:var(--accent2);letter-spacing:.5px;
+    margin-bottom:12px;
+  }
+  .meta-row{display:flex;flex-wrap:wrap;gap:16px;}
+  .meta-item{
+    display:flex;align-items:center;gap:6px;
+    font-size:13px;color:var(--muted);
+  }
+  .meta-item svg{color:var(--accent);flex-shrink:0;}
+  .meta-item a{color:var(--muted);text-decoration:none;}
+  .meta-item a:hover{color:var(--accent2);}
+
+  /* BADGE ROW */
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+  .badge{
+    background:rgba(108,99,255,.12);
+    border:1px solid rgba(108,99,255,.3);
+    color:var(--accent);
+    padding:5px 14px;border-radius:30px;
+    font-size:12px;font-weight:600;letter-spacing:.3px;
+  }
+  .badge.green{
+    background:rgba(0,212,170,.1);
+    border-color:rgba(0,212,170,.3);
+    color:var(--accent2);
+  }
+
+  /* SECTION */
+  .section{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:28px 32px;
+    margin-bottom:20px;
+  }
+  .section-title{
+    font-size:11px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;color:var(--accent);
+    margin-bottom:20px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .section-title::after{
+    content:'';flex:1;height:1px;
+    background:linear-gradient(to right,var(--border),transparent);
+  }
+
+  /* ABOUT */
+  .about-text{font-size:14px;line-height:1.8;color:#b0b8cc;}
+
+  /* EXPERIENCE */
+  .exp-item{position:relative;padding-left:20px;margin-bottom:24px;}
+  .exp-item:last-child{margin-bottom:0;}
+  .exp-item::before{
+    content:'';position:absolute;left:0;top:6px;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 8px var(--accent);
+  }
+  .exp-item::after{
+    content:'';position:absolute;left:3.5px;top:18px;
+    width:1px;bottom:0;
+    background:linear-gradient(to bottom,var(--border),transparent);
+  }
+  .exp-item:last-child::after{display:none;}
+  .exp-role{font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px;}
+  .exp-company{font-size:13px;color:var(--accent2);font-weight:500;margin-bottom:4px;}
+  .exp-date{font-size:12px;color:var(--muted);margin-bottom:8px;}
+  .exp-desc{font-size:13px;color:#9aa0b4;line-height:1.7;}
+  .exp-desc li{margin-left:16px;margin-bottom:3px;}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+  .skill-chip{
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:13px;color:var(--text);
+    font-weight:500;
+    transition:all .2s;
+    cursor:default;
+  }
+  .skill-chip:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+    background:rgba(108,99,255,.08);
+    transform:translateY(-2px);
+  }
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .proj-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px 18px;
+    transition:all .25s;
+    text-decoration:none;
+    display:block;
+  }
+  .proj-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-3px);
+    box-shadow:0 8px 24px rgba(108,99,255,.15);
+  }
+  .proj-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .proj-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px;}
+  .proj-lang{
+    display:inline-block;
+    font-size:11px;font-weight:600;
+    color:var(--accent2);
+    background:rgba(0,212,170,.08);
+    border:1px solid rgba(0,212,170,.2);
+    border-radius:20px;padding:2px 10px;
+  }
+
+  /* EDUCATION */
+  .edu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
+  .edu-item:last-child{border-bottom:none;padding-bottom:0;}
+  .edu-degree{font-size:14px;font-weight:700;color:var(--white);}
+  .edu-school{font-size:13px;color:var(--muted);margin-top:2px;}
+  .edu-year{font-size:12px;color:var(--accent);font-weight:600;white-space:nowrap;}
+
+  /* FREELANCE */
+  .freelance-box{
+    display:flex;align-items:center;gap:16px;
+    background:rgba(0,212,170,.06);
+    border:1px solid rgba(0,212,170,.2);
+    border-radius:12px;padding:16px 20px;
+  }
+  .freelance-icon{font-size:28px;}
+  .freelance-text h3{font-size:14px;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+  .freelance-text p{font-size:13px;color:var(--muted);}
+
+  /* PRINT */
+  @media print{
+    body{background:#fff;color:#000;padding:0;}
+    .page{max-width:100%;}
+    .header,.section{border:1px solid #ddd;break-inside:avoid;}
+    .proj-card:hover,.skill-chip:hover{transform:none;}
+  }
+  @media(max-width:600px){
+    .header{flex-direction:column;text-align:center;}
+    .meta-row{justify-content:center;}
+    .projects-grid{grid-template-columns:1fr;}
+    .section{padding:20px 18px;}
+    .header{padding:28px 20px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/132699650?v=4" alt="Engr Ali Khan"/>
+    <div class="header-info">
+      <h1>Engr Ali Khan</h1>
+      <div class="title">MERN Stack Software Engineer &nbsp;·&nbsp; AI Integration Specialist</div>
+      <div class="meta-row">
+        <div class="meta-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Islamabad, Pakistan
+        </div>
+        <div class="meta-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6l-4-4-4 4M12 2v13"/></svg>
+          <a href="http://Itsolera.com" target="_blank">Itsolera.com</a>
+        </div>
+        <div class="meta-item">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <a href="https://github.com/akkhan312" target="_blank">github.com/akkhan312</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BADGES -->
+  <div class="badges">
+    <span class="badge">4+ Years Experience</span>
+    <span class="badge">MERN Stack</span>
+    <span class="badge">React Native</span>
+    <span class="badge">AI / RAG Systems</span>
+    <span class="badge green">Open to Work</span>
+    <span class="badge green">Fiverr Freelancer</span>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-title">About Me</div>
+    <p class="about-text">
+      Passionate Software Engineer with <strong>4+ years of hands-on experience</strong> building scalable full-stack web and mobile applications. Currently working as a MERN Stack Software Engineer at <strong>Itsolera Pvt Ltd</strong>, delivering high-quality products across e-commerce, food delivery, and enterprise platforms. Skilled in integrating cutting-edge AI technologies including RAG pipelines and vector databases into production systems. Active freelancer on Fiverr helping global clients bring their digital ideas to life.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-role">MERN Stack Software Engineer</div>
+      <div class="exp-company">Itsolera Pvt Ltd — Islamabad, Pakistan</div>
+      <div class="exp-date">2021 – Present · Full-time</div>
+      <ul class="exp-desc">
+        <li>Architected and delivered full-stack web applications using MongoDB, Express, React, and Node.js.</li>
+        <li>Built and deployed the official Itsolera company website and client-facing portals.</li>
+        <li>Developed React Native mobile apps including the Foodlakay food-delivery platform (TypeScript).</li>
+        <li>Integrated AI capabilities: RAG system (AliDevRAG) using FastAPI, ChromaDB, and Google Gemini.</li>
+        <li>Led technical assessments and internal tooling projects to streamline developer workflows.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Freelance Web Developer</div>
+      <div class="exp-company">Fiverr — Remote</div>
+      <div class="exp-date">2021 – Present · Freelance</div>
+      <ul class="exp-desc">
+        <li>Delivered custom MERN Stack solutions for international clients across e-commerce, health, and education sectors.</li>
+        <li>Built Mom's Natural Foods — a full e-commerce storefront with cart, auth, and product management.</li>
+        <li>Consistently maintained 5-star ratings through timely delivery and clean, maintainable code.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-chip">JavaScript</div>
+      <div class="skill-chip">TypeScript</div>
+      <div class="skill-chip">React.js</div>
+      <div class="skill-chip">React Native</div>
+      <div class="skill-chip">Node.js</div>
+      <div class="skill-chip">Express.js</div>
+      <div class="skill-chip">MongoDB</div>
+      <div class="skill-chip">Python</div>
+      <div class="skill-chip">FastAPI</div>
+      <div class="skill-chip">ChromaDB</div>
+      <div class="skill-chip">Google Gemini</div>
+      <div class="skill-chip">RAG Systems</div>
+      <div class="skill-chip">REST APIs</div>
+      <div class="skill-chip">Git & GitHub</div>
+      <div class="skill-chip">Tailwind CSS</div>
+      <div class="skill-chip">HTML / CSS</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Featured Projects</div>
+    <div class="projects-grid">
+      <a class="proj-card" href="https://github.com/akkhan312/AliDevRAG" target="_blank">
+        <div class="proj-name">🤖 AliDevRAG</div>
+        <div class="proj-desc">AI-powered document assistant using RAG pipeline. FastAPI backend, React frontend, ChromaDB vector store & Google Gemini AI.</div>
+        <span class="proj-lang">Python · JavaScript</span>
+      </a>
+      <a class="proj-card" href="https://github.com/akkhan312/foodlakay-app" target="_blank">
+        <div class="proj-name">🍔 Foodlakay App</div>
+        <div class="proj-desc">Full-featured food delivery mobile application built with React Native and TypeScript.</div>
+        <span class="proj-lang">TypeScript</span>
+      </a>
+      <a class="proj-card" href="https://github.com/akkhan312/Mom-s-Natural-Foods" target="_blank">
+        <div class="proj-name">🌿 Mom's Natural Foods</div>
+        <div class="proj-desc">E-commerce storefront for an organic food brand with product management, cart & authentication.</div>
+        <span class="proj-lang">JavaScript</span>
+      </a>
+      <a class="proj-card" href="https://github.com/akkhan312/bookStoreApp" target="_blank">
+        <div class="proj-name">📚 BookStore App</div>
+        <div class="proj-desc">Full MERN stack bookstore with listing, search, and CRUD operations for book inventory management.</div>
+        <span class="proj-lang">JavaScript</span>
+      </a>
+      <a class="proj-card" href="https://github.com/akkhan312/Itsolera-Website" target="_blank">
+        <div class="proj-name">🏢 Itsolera Website</div>
+        <div class="proj-desc">Official company website for Itsolera Pvt Ltd — a professional software agency site.</div>
+        <span class="proj-lang">JavaScript</span>
+      </a>
+      <a class="proj-card" href="https://github.com/akkhan312/TextUtiles-App" target="_blank">
+        <div class="proj-name">🔤 TextUtilities App</div>
+        <div class="proj-desc">React app for text manipulation — uppercase, lowercase, reverse, word count & character count.</div>
+        <span class="proj-lang">JavaScript</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">Bachelor of Engineering – Software Engineering</div>
+        <div class="edu-school">University · Pakistan</div>
+      </div>
+      <div class="edu-year">2017 – 2021</div>
+    </div>
+  </div>
+
+  <!-- FREELANCE CTA -->
+  <div class="section">
+    <div class="section-title">Freelance & Availability</div>
+    <div class="freelance-box">
+      <div class="freelance-icon">⚡</div>
+      <div class="freelance-text">
+        <h3>Available for Freelance & Remote Roles</h3>
+        <p>Open to full-time remote positions, contract work, and freelance projects. Find me on Fiverr or reach out directly via GitHub.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
