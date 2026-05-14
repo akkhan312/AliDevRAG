@@ -19,7 +19,7 @@ function App() {
 
   const fetchDocuments = async () => {
     try {
-      const res = await fetch('/api/documents')
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/documents`)
       const data = await res.json()
       setDocuments(data)
     } catch (err) {
@@ -29,7 +29,7 @@ function App() {
 
   const fetchSubjects = async () => {
     try {
-      const res = await fetch('/api/subjects')
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/subjects`)
       const data = await res.json()
       setSubjects(data)
     } catch (err) {
@@ -45,7 +45,7 @@ function App() {
 
   const handleDeleteDocument = async (docId) => {
     try {
-      await fetch(`/api/documents/${docId}`, { method: 'DELETE' })
+      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/documents/${docId}`, { method: 'DELETE' })
       fetchDocuments()
       fetchSubjects()
     } catch (err) {
@@ -59,7 +59,7 @@ function App() {
     setIsLoading(true)
 
     try {
-      const res = await fetch('/api/ask', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/ask`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
