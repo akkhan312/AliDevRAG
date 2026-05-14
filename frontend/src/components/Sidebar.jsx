@@ -161,6 +161,7 @@ function Sidebar({
             RAG Engine Active
           </div>
         </div>
+        </div>
       </aside>
     </>
   )
