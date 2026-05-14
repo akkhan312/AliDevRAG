@@ -85,7 +85,7 @@ def upload_document(
     import sys
     print("Received upload request!", flush=True)
     """Upload and process a document (PDF, DOCX, or TXT)."""
-    allowed_extensions = ['.pdf', '.docx', '.txt', '.png', '.jpg', '.jpeg', '.webp']
+    allowed_extensions = ['.pdf', '.docx', '.txt']
     ext = os.path.splitext(file.filename)[1].lower()
 
     if ext not in allowed_extensions:

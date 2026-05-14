@@ -15,6 +15,12 @@ function App() {
   useEffect(() => {
     fetchDocuments()
     fetchSubjects()
+
+    const handleResize = () => {
+      setSidebarOpen(window.innerWidth >= 768)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const fetchDocuments = async () => {
@@ -91,14 +97,20 @@ function App() {
   const handleClearChat = () => setMessages([])
 
   return (
-    <div className="flex h-screen bg-transparent overflow-hidden relative z-0">
+    <div className="flex h-[100dvh] bg-transparent overflow-hidden relative z-0">
       {/* Sidebar */}
       <Sidebar
         documents={documents}
         subjects={subjects}
         selectedSubject={selectedSubject}
-        onSubjectChange={setSelectedSubject}
-        onUploadClick={() => setIsUploadOpen(true)}
+        onSubjectChange={(subject) => {
+          setSelectedSubject(subject)
+          if (window.innerWidth < 768) setSidebarOpen(false)
+        }}
+        onUploadClick={() => {
+          setIsUploadOpen(true)
+          if (window.innerWidth < 768) setSidebarOpen(false)
+        }}
         onDeleteDocument={handleDeleteDocument}
         isOpen={sidebarOpen}
         onToggle={() => setSidebarOpen(!sidebarOpen)}

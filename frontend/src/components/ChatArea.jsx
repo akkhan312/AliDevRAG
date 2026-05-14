@@ -37,7 +37,7 @@ function ChatArea({
   return (
     <main className="flex-1 flex flex-col min-w-0">
       {/* Top Bar */}
-      <header className="h-16 flex items-center justify-between px-6 border-b border-slate-800/80 glass">
+      <header className="h-16 flex items-center justify-between px-4 md:px-6 border-b border-slate-800/80 glass">
         <div className="flex items-center gap-3">
           {!sidebarOpen && (
             <button
@@ -68,7 +68,7 @@ function ChatArea({
       </header>
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto px-6 py-6">
+      <div className="flex-1 overflow-y-auto px-4 md:px-6 py-4 md:py-6">
         {messages.length === 0 ? (
           /* Welcome Screen */
           <div className="h-full flex flex-col items-center justify-center max-w-2xl mx-auto animate-fade-in">
@@ -134,7 +134,7 @@ function ChatArea({
       </div>
 
       {/* Input Area */}
-      <div className="px-6 pb-6 pt-2">
+      <div className="px-4 md:px-6 pb-4 md:pb-6 pt-2">
         <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
           <div className="relative flex items-center gap-3 p-2 rounded-2xl glass-panel focus-within:border-indigo-500/50 focus-within:shadow-[0_0_20px_rgba(99,102,241,0.2)] transition-all duration-300">
             <input

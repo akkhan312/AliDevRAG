@@ -11,7 +11,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 # OCR dependencies (optional but required for image/scanned-PDF support)
 try:
     import pytesseract
-    from pdf2image import convert_from_path
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    import fitz  # PyMuPDF
     from PIL import Image
     OCR_AVAILABLE = True
 except ImportError:
@@ -71,12 +72,14 @@ class DocumentProcessor:
         """Convert each PDF page to an image and run Tesseract OCR."""
         if not OCR_AVAILABLE:
             raise RuntimeError(
-                "OCR libraries are not installed. "
-                "Run: pip install pdf2image pytesseract  (and install Tesseract on your system)."
+                "This document appears to be a scanned image. Only text-based PDFs, DOCX, and TXT files are supported."
             )
-        images = convert_from_path(file_path, dpi=300)
+        doc = fitz.open(file_path)
         ocr_text = ""
-        for img in images:
+        for page_num in range(len(doc)):
+            page = doc.load_page(page_num)
+            pix = page.get_pixmap(dpi=300)
+            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
             ocr_text += pytesseract.image_to_string(img) + "\n"
         return ocr_text.strip()
 
@@ -84,8 +87,7 @@ class DocumentProcessor:
         """Run Tesseract OCR directly on an image file."""
         if not OCR_AVAILABLE:
             raise RuntimeError(
-                "OCR libraries are not installed. "
-                "Run: pip install pytesseract Pillow  (and install Tesseract on your system)."
+                "Image files are not supported. Only text-based PDFs, DOCX, and TXT files are supported."
             )
         img = Image.open(file_path)
         return pytesseract.image_to_string(img).strip()
