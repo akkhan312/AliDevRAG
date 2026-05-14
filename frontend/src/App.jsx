@@ -10,7 +10,7 @@ function App() {
   const [messages, setMessages] = useState([])
   const [isUploadOpen, setIsUploadOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768)
 
   useEffect(() => {
     fetchDocuments()

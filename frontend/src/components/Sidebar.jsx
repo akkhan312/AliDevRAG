@@ -16,12 +16,20 @@ function Sidebar({
   }
 
   return (
-    <aside
-      className={`${
-        isOpen ? 'w-80' : 'w-0'
-      } transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0 relative`}
-    >
-      <div className="w-80 h-full flex flex-col glass border-r border-slate-700/50">
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden animate-fade-in"
+          onClick={onToggle}
+        />
+      )}
+      <aside
+        className={`fixed md:relative z-50 h-full transition-all duration-300 ease-in-out flex-shrink-0 ${
+          isOpen ? 'translate-x-0 w-80' : '-translate-x-full md:translate-x-0 w-80 md:w-0'
+        }`}
+      >
+        <div className="w-80 h-full flex flex-col glass border-r border-slate-700/50 bg-slate-900/95 md:bg-transparent">
         {/* Header */}
         <div className="p-5 border-b border-slate-700/50">
           <div className="flex items-center justify-between">
@@ -153,8 +161,8 @@ function Sidebar({
             RAG Engine Active
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   )
 }
 
